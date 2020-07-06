@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id ="test" >
+
+    </div>
+    <footer class="f">
+      <button onclick="push()">Push</button>
+      <button onclick="pull()">Pull</button>
+      <button onmouseover="peek1(this)" onmouseout="peek2(this)">Peek</button>
+      <button onmouseover="empty1(this)" onmouseout="empty2(this)">IsEmpty?</button>
+      <button onmouseover="size1(this)" onmouseout="size2(this)">Size</button>
+      <button onclick="swap()">Swap</button>
+    </footer>
+
+    <script>
+    var x = 0  ; 
+    function push(){ 
+      if(x < 6){
+       var block_to_insert ;
+       x++;
+       
+       block_to_insert = document.createElement( 'div' );
+       block_to_insert.id = 'inserted'+x;
+       var container_block = document.createTextNode(x);
+       block_to_insert.appendChild(container_block);
+       document.getElementById("test").appendChild(block_to_insert);
+      } 
+    }
+    function pull(){
+      var id = "inserted"+x;
+      var deleteElement = document.getElementById(id);
+      deleteElement.remove();
+      x--;
+    }
+    function peek1(obj){
+      var idLast = 'inserted'+x ;
+      var idLast1 = document.getElementById(idLast).textContent ;
+      obj.innerHTML = idLast1;
+    }
+    function peek2(obj){
+      obj.innerHTML = "peek";
+    }
+    function empty1(obj){
+      if(x == 0){
+        obj.innerHTML = " yes is Empty";
+      }else{
+        obj.innerHTML = "No isn't Empty";
+      }
+    }
+    function empty2(obj){
+      obj.innerHTML = "IsEmpty?";
+    }
+    function size1(obj){
+      obj.innerHTML = x;
+    }
+    function size2(obj){
+      obj.innerHTML = "Size";
+    }
+    function swap(){
+      var x1 = 'inserted'+ x ;
+      var y1 = x - 1 ;
+      var x2 = "inserted"+y1 ;
+      var y = document.getElementById(x1).textContent ;
+      document.getElementById(x1).innerHTML = document.getElementById(x2).textContent;
+      document.getElementById(x2).innerHTML = y ;
+      
+    }
+       </script> 
+</body>
+</html>

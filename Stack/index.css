@@ -1,0 +1,85 @@
+body{
+    background-image: linear-gradient(to right ,#00BFFF , #78EAFF);
+}
+button{
+    border: 1px solid lightblue;
+    margin-left: 8%;
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right ,#7B68EE , #A390EE);
+    
+}
+.f{
+    height: 50px;
+    width:100%;
+    position:absolute;
+    bottom: 0;
+}
+
+
+#test{
+    height: 300px;
+    width: 300px;
+    border: 2px solid gray;
+    border-top: hidden;
+    position: relative;
+    left: 40%;
+    top: 30%;
+}
+#inserted1{
+    height: 50px;
+    width: 300px;
+    background-color: rgb(105, 255, 198);
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-image: linear-gradient(to right ,#828282 , #aaaaaa);
+}
+#inserted2{
+    height: 50px;
+    width: 300px;
+    background-color: rgb(105, 255, 198);
+    position: absolute;
+    bottom: 50;
+    text-align: center;
+    background-image: linear-gradient(to right ,#828282 , #aaaaaa);
+}
+#inserted3{
+    height: 50px;
+    width: 300px;
+    background-color: rgb(105, 255, 198);
+    position: absolute;
+    bottom: 100;
+    text-align: center;
+    background-image: linear-gradient(to right ,#828282 , #aaaaaa);
+}
+#inserted4{
+    height: 50px;
+    width: 300px;
+    background-color: rgb(105, 255, 198);
+    position: absolute;
+    bottom: 150;
+    text-align: center;
+    background-image: linear-gradient(to right ,#828282 , #aaaaaa);
+}
+#inserted5{
+    height: 50px;
+    width: 300px;
+    background-color: rgb(105, 255, 198);
+    position: absolute;
+    bottom: 200;
+    text-align: center;
+    background-image: linear-gradient(to right ,#828282 , #aaaaaa);
+}
+#inserted6{
+    height: 50px;
+    width: 300px;
+    background-color: rgb(105, 255, 198);
+    position: absolute;
+    bottom: 250;
+    text-align: center;
+    background-image: linear-gradient(to right ,#828282 , #aaaaaa);
+}

@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+  <div id = "container">
     <div id ="test" >
 
     </div>
+  </div> 
     <footer class="f">
       <button onclick="push()">Push</button>
       <button onclick="pull()">Pull</button>
@@ -20,23 +22,45 @@
 
     <script>
     var x = 0  ; 
+    var postion = 150;
     function push(){ 
       if(x < 6){
        var block_to_insert ;
        x++;
-       
        block_to_insert = document.createElement( 'div' );
        block_to_insert.id = 'inserted'+x;
        var container_block = document.createTextNode(x);
        block_to_insert.appendChild(container_block);
-       document.getElementById("test").appendChild(block_to_insert);
+       document.getElementById("container").appendChild(block_to_insert);
+
+       var pos =0;
+       var id = setInterval(frame, 5);
+      function frame() {
+       if (pos == 388) {
+      clearInterval(id);
+       } else {
+      pos++; 
+      block_to_insert.style.left = pos + "px"; 
+    }
+  }
       } 
     }
     function pull(){
       var id = "inserted"+x;
       var deleteElement = document.getElementById(id);
+
+      var pos =388;
+      var id = setInterval(frame, 5);
+      function frame() {
+       if (pos == 792) {
       deleteElement.remove();
-      x--;
+       }else {
+      pos++; 
+      deleteElement.style.left = pos + "px"; 
+    }  
+    }
+    x--;
+      
     }
     function peek1(obj){
       var idLast = 'inserted'+x ;

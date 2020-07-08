@@ -2,30 +2,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Stack Visualization</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
+<body id="body">
   <div id = "container">
-    <div id ="test" >
-
+    <div class="header">
+      <h1>Stack Visualization</h1>
+      <h1>Change BackGround Color</h1>
+      <input class = "color1" type="color" value="#00ff00">
+      <input class = "color2" type="color" value="#ff0000">
+      <script type="text/javascript" src="Stack.js"></script>
     </div>
-  </div> 
+
+    <div id ="test" >
+    </div>
+
+  </div>
+
     <footer class="f">
       <button onclick="push()">Push</button>
       <button onclick="pull()">Pull</button>
       <button onmouseover="peek1(this)" onmouseout="peek2(this)">Peek</button>
       <button onmouseover="empty1(this)" onmouseout="empty2(this)">IsEmpty?</button>
       <button onmouseover="size1(this)" onmouseout="size2(this)">Size</button>
-      <button onclick="swap()">Swap</button>
+      <button onclick="swap()" onmouseover="canSwap(this)" onmouseout="canSwap1(this)">Swap</button>
     </footer>
 
     <script>
     var x = 0  ; 
-    var postion = 150;
     function push(){ 
       if(x < 6){
        var block_to_insert ;
+
        x++;
        block_to_insert = document.createElement( 'div' );
        block_to_insert.id = 'inserted'+x;
@@ -36,7 +45,7 @@
        var pos =0;
        var id = setInterval(frame, 5);
       function frame() {
-       if (pos == 388) {
+       if (pos == 625) {
       clearInterval(id);
        } else {
       pos++; 
@@ -49,18 +58,17 @@
       var id = "inserted"+x;
       var deleteElement = document.getElementById(id);
 
-      var pos =388;
+      var pos =625;
       var id = setInterval(frame, 5);
       function frame() {
-       if (pos == 792) {
+       if (pos == 1220) {
       deleteElement.remove();
        }else {
       pos++; 
       deleteElement.style.left = pos + "px"; 
     }  
     }
-    x--;
-      
+    x--;  
     }
     function peek1(obj){
       var idLast = 'inserted'+x ;
@@ -87,13 +95,24 @@
       obj.innerHTML = "Size";
     }
     function swap(){
+      if(x<2){
+
+      }else{
       var x1 = 'inserted'+ x ;
       var y1 = x - 1 ;
       var x2 = "inserted"+y1 ;
       var y = document.getElementById(x1).textContent ;
       document.getElementById(x1).innerHTML = document.getElementById(x2).textContent;
       document.getElementById(x2).innerHTML = y ;
-      
+      }
+    }
+    function canSwap(obj){
+      if(x<2){
+     obj.innerHTML="You can't Swap ";
+    }
+    }
+    function canSwap1(obj){
+      obj.innerHTML="Swap";
     }
        </script> 
 </body>

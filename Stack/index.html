@@ -15,12 +15,10 @@
       <script type="text/javascript" src="Stack.js"></script>
     </div>
 
-    <div id ="test" >
+    <div id ="stack" >
     </div>
-
   </div>
-
-    <footer class="f">
+    <footer class="footer">
       <button onclick="push()">Push</button>
       <button onclick="pull()">Pull</button>
       <button onmouseover="peek1(this)" onmouseout="peek2(this)">Peek</button>
@@ -30,48 +28,63 @@
     </footer>
 
     <script>
-    var x = 0  ; 
+      //counter to specify the number of the block
+    var counter = 0; 
+    // to change the bottom of the new element
+    var bottomP = 150 ;
     function push(){ 
-      if(x < 6){
-       var block_to_insert ;
-
-       x++;
-       block_to_insert = document.createElement( 'div' );
-       block_to_insert.id = 'inserted'+x;
-       var container_block = document.createTextNode(x);
+      if(counter < 6){
+        counter++;
+      // to add new element to html page
+       // create div tag
+       var block_to_insert = document.createElement( 'div' );
+       // gite div new id and new class
+       block_to_insert.id = 'inserted'+counter;
+       block_to_insert.className = "inserted";
+       // here i change the bottom position for the rectangle
+       block_to_insert.style.bottom = bottomP  ;
+       bottomP= bottomP + 50;
+       console.log(block_to_insert.getElementsByClassName("inserted").bottom);
+       // write text inside the div 
+       var container_block = document.createTextNode(counter);
        block_to_insert.appendChild(container_block);
+       // make it visible on the screen
        document.getElementById("container").appendChild(block_to_insert);
-
+      // here is the animation of the stack that will move the block to stack
        var pos =0;
        var id = setInterval(frame, 5);
       function frame() {
        if (pos == 625) {
       clearInterval(id);
        } else {
-      pos++; 
-      block_to_insert.style.left = pos + "px"; 
-    }
-  }
-      } 
+      pos++;
+      block_to_insert.style.left = pos + "px";
+          }
+       }
+      }
     }
     function pull(){
-      var id = "inserted"+x;
+      // get the element that will be delete by ID
+      var id = "inserted"+counter;
       var deleteElement = document.getElementById(id);
-
+      // here is the animation to delete the item of stack
       var pos =625;
       var id = setInterval(frame, 5);
       function frame() {
        if (pos == 1220) {
+         // delete the element when reach 1220 px in the left
       deleteElement.remove();
        }else {
-      pos++; 
-      deleteElement.style.left = pos + "px"; 
-    }  
+      pos++;
+      deleteElement.style.left = pos + "px";
+      }
     }
-    x--;  
+    bottomP -=50;
+    counter--;
     }
     function peek1(obj){
-      var idLast = 'inserted'+x ;
+      // here we get the text that exist on element by id and made it appear when the mouse over the button
+      var idLast = 'inserted'+counter;
       var idLast1 = document.getElementById(idLast).textContent ;
       obj.innerHTML = idLast1;
     }
@@ -79,27 +92,28 @@
       obj.innerHTML = "peek";
     }
     function empty1(obj){
-      if(x == 0){
+      // here to know if the stack is empty or not
+      if(counter == 0){
         obj.innerHTML = " yes is Empty";
       }else{
         obj.innerHTML = "No isn't Empty";
       }
     }
     function empty2(obj){
+      // to recall te old value of the button text
       obj.innerHTML = "IsEmpty?";
     }
     function size1(obj){
-      obj.innerHTML = x;
+      obj.innerHTML = counter;
     }
     function size2(obj){
       obj.innerHTML = "Size";
     }
     function swap(){
-      if(x<2){
-
-      }else{
-      var x1 = 'inserted'+ x ;
-      var y1 = x - 1 ;
+      if(counter>= 2){
+        // swap between 2 element 
+      var x1 = 'inserted'+ counter ;
+      var y1 = counter - 1 ;
       var x2 = "inserted"+y1 ;
       var y = document.getElementById(x1).textContent ;
       document.getElementById(x1).innerHTML = document.getElementById(x2).textContent;
@@ -107,9 +121,10 @@
       }
     }
     function canSwap(obj){
-      if(x<2){
+      // here to check if i can swap or no
+      if(counter < 2 ){
      obj.innerHTML="You can't Swap ";
-    }
+      }
     }
     function canSwap1(obj){
       obj.innerHTML="Swap";

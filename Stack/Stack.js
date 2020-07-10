@@ -12,3 +12,4 @@ function colorPicker(){
 
 color1.addEventListener("input",colorPicker);
 color2.addEventListener("input",colorPicker);
+
